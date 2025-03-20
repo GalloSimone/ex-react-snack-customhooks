@@ -22,3 +22,38 @@
 // ​
 // export default App;
 // ​
+import { useState, useEffect } from 'react';
+
+function useCustomPointer(content) {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const updateMousePosition = (event) => {
+      setPosition({ x: event.clientX, y: event.clientY });
+    };
+
+    window.addEventListener('mousemove', updateMousePosition);
+
+    
+    return () => {
+      window.removeEventListener('mousemove', updateMousePosition);
+    };
+  }, []);
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        top: position.y - 20, 
+        left: position.x - 20, 
+        pointerEvents: 'none', 
+        zIndex: 9999, 
+        transform: 'translate(-50%, -50%)', 
+      }}
+    >
+      {content}
+    </div>
+  );
+}
+
+export default useCustomPointer;
