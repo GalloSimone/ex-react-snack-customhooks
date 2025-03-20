@@ -1,4 +1,4 @@
-
+// import { SwitchComponent } from './snack/Snack1'
 import './App.css'
 
 function App() {
@@ -7,7 +7,10 @@ function App() {
     <>
   
 
-    <h1>helo worldo</h1>
+  {/* <div>
+      <h1>test useSwitch</h1>
+    <SwitchComponent/>
+    </div> */}
    
     </>
   )

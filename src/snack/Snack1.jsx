@@ -19,3 +19,28 @@
 // }
 // ​
 // export default App;
+import { useState } from "react";
+
+function useSwitch(initialState = false) {
+  const [isOn, setIsOn] = useState(initialState);
+
+  function toggle() {
+    setIsOn(prev => !prev);
+  }
+
+  return [isOn, toggle];
+}
+
+function SwitchComponent() {
+  const [isOn, toggle] = useSwitch();
+
+  return (
+    <div>
+      <p>Il valore è: {isOn ? "ON 🔵" : "OFF ⚪️"}</p>
+      <button onClick={toggle}>Toggle</button>
+    </div>
+  );
+}
+
+export { SwitchComponent };
+export default useSwitch;
